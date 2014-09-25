@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Diagnostics;
 using System.Text.RegularExpressions;
 
 namespace ClippingsExplorer.Entities
 {
+    [DebuggerDisplay("{Title} {Author}")]
     public class Book
     {
         public string Title { get; private set; }
@@ -16,16 +15,15 @@ namespace ClippingsExplorer.Entities
             Title = title;
         }
 
-        static readonly Regex _titleRegex = new Regex(@".*\((.*)\)", RegexOptions.Compiled);
+        static readonly Regex _titleRegex = new Regex(@"(.*)\s\(", RegexOptions.Compiled);
+        static readonly Regex _authorRegex = new Regex(@".*\s\((.*)\)", RegexOptions.Compiled);
 
         public static Book GetBookFromString(string rawTextLine)
         {
-            var matched = _titleRegex.Match(rawTextLine);
+            var title = _titleRegex.Match(rawTextLine);
+            var author = _authorRegex.Match(rawTextLine);
 
-            if (matched.Success == false)
-                return new Book("Failed", "Unknown");
-            else
-                return new Book(matched.Groups[1].Value, matched.Groups[2].Value);
+            return new Book(title.Groups[1].Value, author.Groups[1].Value);
         }
 
     }
