@@ -17,7 +17,7 @@ namespace ClippingsExplorer.DeviceLayer.Kindle
             {
                 var book = Book.GetBookFromString(itemsStrings[i]);
                 
-                var highlight = HighlightItem.GetItemFromString(itemsStrings[i + 1], itemsStrings[i + 2]);
+                var highlight = HighlightItem.GetItemFromString(itemsStrings[i + 1], itemsStrings[i + 3]);
 
                 clippings.Add(new Clipping(book, highlight));
             }
