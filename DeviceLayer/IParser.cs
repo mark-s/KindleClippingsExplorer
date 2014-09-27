@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using ClippingsExplorer.Entities;
 
-namespace ClippingsExplorer.ClippingsParser
+namespace ClippingsExplorer.DeviceLayer
 {
     public interface IParser
     {
-        List<Clipping> ParseClippings(IList<string> itemsStrings);
+        IList<Clipping> ParseClippings(IList<string> itemsStrings);
     }
 }

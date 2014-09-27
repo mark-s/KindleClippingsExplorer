@@ -38,7 +38,22 @@
     <StartupObject>ClippingsExplorer.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GalaSoft.MvvmLight">
+      <HintPath>packages\MvvmLightLibs.4.4.32.7\lib\net40\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras">
+      <HintPath>packages\MvvmLightLibs.4.4.32.7\lib\net40\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro">
+      <HintPath>packages\MahApps.Metro.0.14.0.0\lib\net40\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\MahApps.Metro.0.14.0.0\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,23 +70,28 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModel\MainWindowViewModel.cs" />
-    <Compile Include="View\MainWindow.xaml.cs">
+    <Compile Include="DataLoadException.cs" />
+    <Compile Include="DeviceLayer\IDiskIO.cs" />
+    <Compile Include="DeviceLayer\IParser.cs" />
+    <Compile Include="DeviceLayer\Kindle\DiskIO.cs" />
+    <Compile Include="DeviceLayer\Kindle\Parser.cs" />
+    <Compile Include="DeviceLayer\LoadResult.cs" />
+    <Compile Include="ServiceLayer\IClippingsRepository.cs" />
+    <Compile Include="ServiceLayer\ClippingsRepository.cs" />
+    <Compile Include="ServiceLayer\SettingsRepo.cs" />
+    <Compile Include="UILayer\ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="UILayer\ViewModel\ViewModelLocator.cs" />
+    <Compile Include="UILayer\View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ClippingsParser\IParser.cs" />
-    <Compile Include="ClippingsParser\Parser.cs" />
     <Compile Include="Entities\Book.cs" />
     <Compile Include="Entities\Clipping.cs" />
     <Compile Include="Entities\HighlightItem.cs" />
-    <Compile Include="KindleIO\IKindleFileIO.cs" />
-    <Compile Include="KindleIO\KindleFileIO.cs" />
-    <Compile Include="KindleIO\KindleLoadResult.cs" />
-    <Page Include="View\MainWindow.xaml">
+    <Page Include="UILayer\View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -94,6 +114,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

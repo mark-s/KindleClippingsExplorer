@@ -6,6 +6,9 @@ namespace ClippingsExplorer.Entities
     [DebuggerDisplay("{Title} {Author}")]
     public class Book
     {
+        static readonly Regex _titleRegex = new Regex(@"(.*)\s\(", RegexOptions.Compiled);
+        static readonly Regex _authorRegex = new Regex(@".*\s\((.*)\)", RegexOptions.Compiled);
+
         public string Title { get; private set; }
         public string Author { get; private set; }
 
@@ -14,9 +17,6 @@ namespace ClippingsExplorer.Entities
             Author = author;
             Title = title;
         }
-
-        static readonly Regex _titleRegex = new Regex(@"(.*)\s\(", RegexOptions.Compiled);
-        static readonly Regex _authorRegex = new Regex(@".*\s\((.*)\)", RegexOptions.Compiled);
 
         public static Book GetBookFromString(string rawTextLine)
         {

@@ -22,5 +22,17 @@ namespace ClippingsExplorer.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ClippingsFileName {
+            get {
+                return ((string)(this["ClippingsFileName"]));
+            }
+            set {
+                this["ClippingsFileName"] = value;
+            }
+        }
     }
 }

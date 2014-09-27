@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 
-namespace ClippingsExplorer.KindleIO
+namespace ClippingsExplorer.DeviceLayer
 {
-    public class KindleLoadResult
+    public class LoadResult
     {
         public bool Success { get; set; }
         public string ErrorText { get; set; }
         public List<string> FileContents { get; set; }
 
-        public KindleLoadResult()
+        public LoadResult()
         {
             FileContents  = new List<string>();
         }
